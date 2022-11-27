@@ -18,7 +18,7 @@ const Style = {
         height: '10%',
         textAlign: 'center',
         alignItems: 'center',
-        boxShadow: '12px 2px lightgray'
+        boxShadow: '1px 1px #d9d9d9'
 
     },
 }
@@ -26,18 +26,17 @@ const {root, navBar} = Style
 
 function App() {
     return (
-        <Col style={root}>
-            <Row style={navBar}>
-                <Col span={8}><h3>Bug Tracker</h3></Col>
-                <Col span={12}><Search placeholder="search project"/></Col>
-                <Col span={4}><Button icon={<PlusOutlined/>}> Add New Project </Button></Col>
-            </Row>
-        </Col>
+        <>
+            <Col style={root}>
+                <Row style={navBar}>
+                    <Col span={8}><h3>Bug Tracker</h3></Col>
+                    <Col span={12}><Search placeholder="search project"/></Col>
+                    <Col span={4}><Button icon={<PlusOutlined/>}> Add New Project </Button></Col>
+                </Row>
+            </Col>
+        </>
+
     )
 }
 
 export default App
-{/*<Title level={3}>Bug Tracker</Title>
-                <Search placeholder="search project"/>
-                <Button icon={<PlusOutlined/>}> Add New Project </Button>*/
-}
