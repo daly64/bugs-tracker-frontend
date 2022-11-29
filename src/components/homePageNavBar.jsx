@@ -1,14 +1,28 @@
 import React from 'react';
 import {Button, Col, Row} from "antd";
 import Search from "antd/es/input/Search.js";
-import {PlusOutlined} from "@ant-design/icons";
+import {BugOutlined, PlusOutlined} from "@ant-design/icons";
+
+const nav = {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
+    color: '#6366f1',
+    fontSize: '1rem',
+    boxShadow: '#6366f150 1px 2px',
+}
+const icon = { fontSize: '2rem', margin:'0 2rem' }
+
 
 function HomePageNavBar() {
+
     return (
-        <Row className='shadow-md shadow-indigo-500/40 h-12 items-center'>
-            <Col span={8}><h1 className='font-mono font-bold text-center text-indigo-500 text-2xl'>Bug Tracker</h1></Col>
-            <Col span={12}><Search placeholder="search project"/></Col>
-            <Col span={4}  className=' align-middle text-center'><Button icon={<PlusOutlined/>}> Add New Project </Button></Col>
+
+        <Row style={nav}>
+            <Col span={8}><Row> <BugOutlined  style={icon} /> <h3>Bug Tracker</h3></Row></Col>
+            <Col span={12}><Search size="large" enterButton placeholder="search project"/></Col>
+            <Col span={4}><Button type='primary' icon={<PlusOutlined/>}> Add New Project </Button></Col>
         </Row>
     );
 }
