@@ -1,13 +1,13 @@
 import React from 'react';
-import HomePageNavBar from "./components/homePageNavBar.jsx";
-import './app.css'
+import HomePage from "./Pages/HomePage/HomePage.jsx";
+
+
 function App() {
     return (
-        <div className='App'>
+        <>
+            <HomePage/>
 
-            <HomePageNavBar />
-
-        </div>
+        </>
 
     )
 }
