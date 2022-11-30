@@ -18,7 +18,7 @@ function ProjectCard() {
             <Card hoverable title="Project Name" bordered style={card}>
 
                 <Paragraph ellipsis={paragraph}>
-                    Duis dolor urna, aliquam ut laoreet sit amet, viverra quis urna.
+                    project description, Duis dolor urna, aliquam ut laoreet sit amet, viverra quis urna.
                     In convallis odio quis commodo blandit. Donec congue pharetra volutpat.
                     Etiam malesuada gravida ligula, vitae ultricies libero dictum in.
                     Praesent sodales metus eget neque mattis sollicitudin.
