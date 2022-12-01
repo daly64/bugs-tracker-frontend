@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from "./App.jsx";
 import {ConfigProvider} from "antd";
+import {primaryColor} from "./Pages/HomePage/components/style.js";
 
 
 
@@ -10,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <ConfigProvider
             theme={{
                 token: {
-                    colorPrimary: '#6366f1',
+                    colorPrimary: primaryColor,
                 },
             }}
         >

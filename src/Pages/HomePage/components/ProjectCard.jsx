@@ -1,16 +1,12 @@
 import React from 'react';
 import {Button, Card, Col, Progress, Row, Tooltip, Typography} from "antd";
 import {EditOutlined} from "@ant-design/icons";
+import {card, paragraph, primaryColor, row} from "./style.js";
 
 const {Paragraph, Text} = Typography;
 
 
-const card = {
-    border: '.5px solid #6366f1',
-    textAlign: 'center',
-};
-const paragraph = {rows: 4,};
-const row = {justifyContent: 'space-around'};
+
 
 function ProjectCard() {
     return (
@@ -27,9 +23,9 @@ function ProjectCard() {
                 </Paragraph>
 
                 <Row style={row}>
-                    <Progress percent={50} steps={4} strokeColor='#6366f1'/>
+                    <Progress percent={50} steps={4} strokeColor={primaryColor}/>
                     <Text type="success" style={{fontWeight: 'bold'}}>In Devlopement</Text>
-                    <Tooltip placement="bottom" title='edit' color='#6366f1'>
+                    <Tooltip placement="bottom" title='edit' color={primaryColor}>
                         <Button type="ghost" icon={<EditOutlined/>}/>
                     </Tooltip>
                 </Row>
