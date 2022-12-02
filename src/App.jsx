@@ -1,12 +1,13 @@
 import React from 'react';
-import HomePage from "./Pages/HomePage/HomePage.jsx";
+import ProjectPage from "./Pages/ProjectPage/ProjectPage.jsx";
 
 
 function App() {
 
     return (
         <>
-            <HomePage/>
+            {/*<HomePage/>*/}
+            <ProjectPage/>
 
         </>
 

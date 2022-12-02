@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Card, Col, Progress, Row, Tooltip, Typography} from "antd";
 import {EditOutlined} from "@ant-design/icons";
-import {card, paragraph, primaryColor, row} from "./style.js";
+import {card, paragraph, primaryColor, row, status} from "../../../GeneralStyle.js";
 
 const {Paragraph, Text} = Typography;
 
@@ -24,7 +24,7 @@ function ProjectCard() {
 
                 <Row style={row}>
                     <Progress percent={50} steps={4} strokeColor={primaryColor}/>
-                    <Text type="success" style={{fontWeight: 'bold'}}>In Devlopement</Text>
+                    <Text type="success" style={status}>In Development</Text>
                     <Tooltip placement="bottom" title='edit' color={primaryColor}>
                         <Button type="ghost" icon={<EditOutlined/>}/>
                     </Tooltip>

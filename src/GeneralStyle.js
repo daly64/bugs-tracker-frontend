@@ -19,9 +19,16 @@ const card = {
     border: `.5px solid ${primaryColor}`,
     textAlign: 'center',
 };
+const bigcard = {
+    border: `.5px solid ${primaryColor}`,
+    textAlign: 'center',
+    height:'84vh'
+};
 const paragraph = {rows: 4,};
 const row = {justifyContent: 'space-around'};
-const list ={marginTop: '24px'};
+const list = {marginTop: '24px'};
+const title = {justifyContent: 'center', fontWeight: 'bold', color: primaryColor};
+const status = {fontWeight: 'bold'};
 
 
-export {nav, icon, card, paragraph,row,list,primaryColor}
+export {bigcard,title, status, nav, icon, card, paragraph, row, list, primaryColor}

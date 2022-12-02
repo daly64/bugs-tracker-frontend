@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row} from "antd";
 import ProjectCard from "./ProjectCard.jsx";
-import {list} from "./style.js";
+import {list} from "../../../GeneralStyle.js";
 
 
 function ProjectsList() {
