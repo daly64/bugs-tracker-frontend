@@ -1,5 +1,5 @@
 import React from 'react';
-import BugsPage from "./Pages/BugsPage/BugsPage.jsx";
+import FeaturesPage from "./Pages/FeaturesPage/FeaturesPage.jsx";
 
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
         <>
             {/*<HomePage/>*/}
             {/*<ProjectPage/>*/}
-            <BugsPage/>
+            <FeaturesPage/>
 
         </>
 
