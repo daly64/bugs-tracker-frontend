@@ -12,9 +12,11 @@ function NavBar() {
             <Row style={nav}>
                 <Col span={8}><Title editable level={2} style={title}>Project Name</Title></Col>
                 <Col span={16} style={{textAlign: 'end', paddingRight: '4rem'}}>
-                    <Title level={4} type="success" style={status}>In Development <Button type='text'
-                                                                                          icon={<EditOutlined
-                                                                                              style={{color: "green"}}/>}/></Title>
+                    <Title level={4} type="success" style={status}>In Development
+                        <Button type='text'
+
+                                icon={<EditOutlined style={{color: "green"}}/>}/>
+                    </Title>
 
                 </Col>
             </Row>

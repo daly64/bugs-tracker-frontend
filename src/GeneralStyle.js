@@ -20,9 +20,9 @@ const card = {
     textAlign: 'center',
 };
 const bigcard = {
-    border: `.5px solid ${primaryColor}`,
+    border: 'none',
     textAlign: 'center',
-    height:'84vh'
+
 };
 const paragraph = {rows: 4,};
 const row = {justifyContent: 'space-around'};

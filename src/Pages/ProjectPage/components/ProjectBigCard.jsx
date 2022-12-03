@@ -9,7 +9,7 @@ const {Paragraph, Title, Text} = Typography;
 function ProjectBigCard() {
     return (
         <Col span={24} style={list}>
-            <Card bordered style={bigcard}>
+            <Card style={bigcard}>
                 <Row gutter={10} style={row}>
                     <Col span={12}>
                         <Divider orientation="left">Description</Divider>
