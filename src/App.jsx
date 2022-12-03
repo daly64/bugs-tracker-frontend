@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectPage from "./Pages/ProjectPage/ProjectPage.jsx";
+import BugsPage from "./Pages/BugsPage/BugsPage.jsx";
 
 
 function App() {
@@ -7,7 +7,8 @@ function App() {
     return (
         <>
             {/*<HomePage/>*/}
-            <ProjectPage/>
+            {/*<ProjectPage/>*/}
+            <BugsPage/>
 
         </>
 
