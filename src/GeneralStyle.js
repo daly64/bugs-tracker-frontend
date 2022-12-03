@@ -22,13 +22,11 @@ const card = {
 const bigcard = {
     border: 'none',
     textAlign: 'center',
-
 };
 const paragraph = {rows: 4,};
 const row = {justifyContent: 'space-around'};
 const list = {marginTop: '24px'};
 const title = {justifyContent: 'center', fontWeight: 'bold', color: primaryColor};
 const status = {fontWeight: 'bold'};
-
 
 export {bigcard,title, status, nav, icon, card, paragraph, row, list, primaryColor}
