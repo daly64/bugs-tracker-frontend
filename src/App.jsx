@@ -1,9 +1,9 @@
 import React from 'react';
-import HomePage from "./Pages/HomePage/HomePage.jsx";
+import HomePage from "./Pages/HomePage.jsx";
 import {createBrowserRouter, RouterProvider,} from "react-router-dom";
-import ProjectPage from "./Pages/ProjectPage/ProjectPage.jsx";
-import BugsPage from "./Pages/BugsPage/BugsPage.jsx";
-import FeaturesPage from "./Pages/FeaturesPage/FeaturesPage.jsx";
+import ProjectPage from "./Pages/ProjectPage.jsx";
+import BugsPage from "./Pages/BugsPage.jsx";
+import FeaturesPage from "./Pages/FeaturesPage.jsx";
 
 const router = createBrowserRouter([
     {path: "/", element: <HomePage/>},

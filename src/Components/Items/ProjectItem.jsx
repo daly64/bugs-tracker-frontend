@@ -1,13 +1,13 @@
 import React from 'react';
 import {Button, Card, Col, Progress, Row, Tooltip, Typography} from "antd";
 import {EditOutlined} from "@ant-design/icons";
-import {card, paragraph, primaryColor, row, status} from "../../../GeneralStyle.js";
+import {card, paragraph, primaryColor, row, status} from "../../GeneralStyle.js";
 import {useNavigate} from "react-router-dom";
 
 const {Paragraph, Text} = Typography;
 
 
-function ProjectCard() {
+function ProjectItem() {
     const navigate = useNavigate();
     return (
         <Col span={8} onClick={() => navigate("product/1")}>
@@ -34,4 +34,4 @@ function ProjectCard() {
     );
 }
 
-export default ProjectCard;
+export default ProjectItem;

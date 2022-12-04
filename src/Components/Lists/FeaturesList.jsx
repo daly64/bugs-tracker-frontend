@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, List} from "antd";
-import {list} from "../../../GeneralStyle.js";
-import FeatureItem from "./FeatureItem.jsx";
+import {list} from "../../GeneralStyle.js";
+import FeatureItem from "../Items/FeatureItem.jsx";
 
 
 const data = [];

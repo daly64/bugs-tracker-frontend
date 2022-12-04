@@ -30,3 +30,4 @@ const status = {fontWeight: 'bold'};
 const homeButton = {alignSelf: 'center', marginTop: '.7rem'};
 
 export {homeButton, bigcard, title, status, nav, icon, card, paragraph, row, list, primaryColor}
+

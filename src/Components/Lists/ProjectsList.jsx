@@ -1,16 +1,16 @@
 import React from 'react';
 import {Row} from "antd";
-import ProjectCard from "./ProjectCard.jsx";
-import {list} from "../../../GeneralStyle.js";
+import ProjectItem from "../Items/ProjectItem.jsx";
+import {list} from "../../GeneralStyle.js";
 
 
 function ProjectsList() {
     return (
         <>
             <Row style={list} gutter={[10, 10]}>
-                <ProjectCard/>
-                <ProjectCard/>
-                <ProjectCard/>
+                <ProjectItem/>
+                <ProjectItem/>
+                <ProjectItem/>
 
             </Row>
         </>

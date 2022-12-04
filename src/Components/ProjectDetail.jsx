@@ -1,13 +1,13 @@
 import React from 'react';
 import {Button, Card, Col, Divider, List, Progress, Row, Typography} from "antd";
-import {bigcard, list, paragraph, primaryColor, row} from "../../../GeneralStyle.js";
+import {bigcard, list, paragraph, primaryColor, row} from "../GeneralStyle.js";
 import {CheckOutlined, CloseOutlined, EditOutlined} from "@ant-design/icons";
 import {useNavigate} from "react-router-dom";
 
 const {Paragraph, Title, Text} = Typography;
 
 
-function ProjectBigCard() {
+function ProjectDetail() {
     const navigate = useNavigate();
     return (
         <Col span={24} style={list}>
@@ -61,4 +61,4 @@ function ProjectBigCard() {
     );
 }
 
-export default ProjectBigCard;
+export default ProjectDetail;
