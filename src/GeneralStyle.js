@@ -3,7 +3,6 @@ const primaryColorAlpha = `#0047AB50`
 const nav = {
     backgroundColor: 'white',
     fontWeight: 'bold',
-    textAlign: 'center',
     alignItems: 'center',
     alignContent: 'center',
     color: primaryColor,
@@ -26,7 +25,8 @@ const bigcard = {
 const paragraph = {rows: 4,};
 const row = {justifyContent: 'space-around'};
 const list = {marginTop: '24px'};
-const title = {justifyContent: 'center', fontWeight: 'bold', color: primaryColor};
+const title = {justifyContent: 'start', fontWeight: 'bold', color: primaryColor};
 const status = {fontWeight: 'bold'};
+const homeButton = {alignSelf: 'center', marginTop: '.7rem'};
 
-export {bigcard,title, status, nav, icon, card, paragraph, row, list, primaryColor}
+export {homeButton, bigcard, title, status, nav, icon, card, paragraph, row, list, primaryColor}

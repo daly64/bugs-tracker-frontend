@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {Affix, Button, Col, Form, Input, Modal, Row, Typography} from "antd";
-import {nav, title} from '../../../GeneralStyle.js'
-import {PlusOutlined} from "@ant-design/icons";
+import {homeButton, nav, title} from '../../../GeneralStyle.js'
+import {ArrowLeftOutlined, PlusOutlined} from "@ant-design/icons";
 import Search from "antd/es/input/Search.js";
 import TextArea from "antd/es/input/TextArea.js";
+import {useNavigate} from "react-router-dom";
 
 const {Title} = Typography;
 
@@ -12,11 +13,24 @@ function NavBar() {
     const showModal = () => setIsModalOpen(true)
     const handleOk = () => setIsModalOpen(false)
     const handleCancel = () => setIsModalOpen(false)
+    const navigate = useNavigate();
     return (
         <>
             <Affix offsetTop='0'>
             <Row style={nav}>
-                <Col span={8}><Title level={2} style={title}>12 features</Title></Col>
+                <Col span={8}>
+                    <Row>
+                        <Col span={2} style={homeButton}>
+                            <Button type={"link"}
+                                    shape="circle"
+                                    onClick={() => navigate("/product/1")}
+                                    icon={<ArrowLeftOutlined/>}/> </Col>
+                        <Col span={22}>
+                            <Title level={2} style={title}>12 features</Title>
+                        </Col>
+                    </Row>
+
+                </Col>
                 <Col span={12}><Search size="large"  placeholder="search feature"/></Col>
                 <Col span={4}><Button type='default'
                                       onClick={showModal}

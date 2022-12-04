@@ -2,15 +2,15 @@ import React from 'react';
 import {Button, Card, Col, Progress, Row, Tooltip, Typography} from "antd";
 import {EditOutlined} from "@ant-design/icons";
 import {card, paragraph, primaryColor, row, status} from "../../../GeneralStyle.js";
+import {useNavigate} from "react-router-dom";
 
 const {Paragraph, Text} = Typography;
 
 
-
-
 function ProjectCard() {
+    const navigate = useNavigate();
     return (
-        <Col span={8}>
+        <Col span={8} onClick={() => navigate("product/1")}>
             <Card hoverable title="Project Name" bordered style={card}>
 
                 <Paragraph ellipsis={paragraph}>

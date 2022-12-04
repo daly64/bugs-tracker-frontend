@@ -2,11 +2,13 @@ import React from 'react';
 import {Button, Card, Col, Divider, List, Progress, Row, Typography} from "antd";
 import {bigcard, list, paragraph, primaryColor, row} from "../../../GeneralStyle.js";
 import {CheckOutlined, CloseOutlined, EditOutlined} from "@ant-design/icons";
+import {useNavigate} from "react-router-dom";
 
 const {Paragraph, Title, Text} = Typography;
 
 
 function ProjectBigCard() {
+    const navigate = useNavigate();
     return (
         <Col span={24} style={list}>
             <Card style={bigcard}>
@@ -28,16 +30,25 @@ function ProjectBigCard() {
                         <Progress type="circle" strokeColor={primaryColor} percent={75}/>
                     </Col>
                 </Row>
-                <Row gutter={30} style={{marginTop:'5rem'}}>
+                <Row gutter={30} style={{marginTop: '5rem'}}>
                     <Col span={12}>
-                        <List header={<Title level={3}>Bugs<Button type="ghost" icon={<EditOutlined/>}/> </Title>} bordered>
+                        <List header={<Title level={3}>Bugs
+                            <Button type="link"
+                                    icon={<EditOutlined/>}
+                                    onClick={() => navigate("bugs")}
+                            /> </Title>}
+                              bordered>
                             <List.Item> <Text>10 total</Text> </List.Item>
                             <List.Item><CheckOutlined style={{color: "green"}}/> <Text>3 resolved</Text> </List.Item>
                             <List.Item><CloseOutlined style={{color: "red"}}/> <Text>7 unresolved</Text> </List.Item>
                         </List>
                     </Col>
                     <Col span={12}>
-                        <List header={<Title level={3}>Features <Button type="ghost" icon={<EditOutlined/>}/> </Title>} bordered>
+                        <List header={<Title level={3}>Features
+                            <Button type="link" icon={<EditOutlined/>}
+                                    onClick={() => navigate("features")}
+                            />
+                        </Title>} bordered>
                             <List.Item> <Text>12 total</Text> </List.Item>
                             <List.Item><CheckOutlined style={{color: "green"}}/> <Text>6 developed</Text> </List.Item>
                             <List.Item><CloseOutlined style={{color: "red"}}/> <Text>6 not developed</Text> </List.Item>
