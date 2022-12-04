@@ -1,14 +1,15 @@
 import React from 'react';
-import FeaturesPage from "./Pages/FeaturesPage/FeaturesPage.jsx";
+import HomePage from "./Pages/HomePage/HomePage.jsx";
 
 
 function App() {
 
     return (
         <>
-            {/*<HomePage/>*/}
+            <HomePage/>
             {/*<ProjectPage/>*/}
-            <FeaturesPage/>
+            {/*<BugsPage/>*/}
+            {/*<FeaturesPage/>*/}
 
         </>
 
