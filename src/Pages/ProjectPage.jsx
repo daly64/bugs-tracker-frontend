@@ -1,15 +1,11 @@
 import React from 'react';
-import NavBar from "../Components/NavBar.jsx";
 import ProjectDetail from "../Components/ProjectDetail.jsx";
+import ProjectNavBar from "../Components/NavBars/ProjectNavBar.jsx";
 
 function ProjectPage() {
-    const config = {
-        title: 'Project Name',
-
-    }
     return (
         <>
-            <NavBar config={config}/>
+            <ProjectNavBar/>
             <ProjectDetail/>
         </>
     );

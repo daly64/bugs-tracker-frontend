@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Card, Col, Divider, List, Progress, Row, Typography} from "antd";
-import {bigcard, list, paragraph, primaryColor, row} from "../GeneralStyle.js";
+import {bigcard, list, paragraph, mainColor, row} from "../GeneralStyle.js";
 import {CheckOutlined, CloseOutlined, EditOutlined} from "@ant-design/icons";
 import {useNavigate} from "react-router-dom";
 
@@ -27,7 +27,7 @@ function ProjectDetail() {
                     <Col span={4}/>
                     <Col span={8}>
                         <Divider orientation="center">Progress</Divider>
-                        <Progress type="circle" strokeColor={primaryColor} percent={75}/>
+                        <Progress type="circle" strokeColor={mainColor} percent={75}/>
                     </Col>
                 </Row>
                 <Row gutter={30} style={{marginTop: '5rem'}}>
