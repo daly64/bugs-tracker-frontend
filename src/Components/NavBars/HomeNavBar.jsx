@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {Affix, Button, Col, Form, Input, Modal, Row} from "antd";
-import {icon, nav} from '../../GeneralStyle.js'
+import style from '../../GeneralStyle.js'
 import {BugOutlined, PlusOutlined} from "@ant-design/icons";
 import Search from "antd/es/input/Search.js";
 import TextArea from "antd/es/input/TextArea.js";
 
-
+const {icon, nav}=style
 function HomeNavBar() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => setIsModalOpen(true)

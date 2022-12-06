@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col, List} from "antd";
-import {list} from "../../GeneralStyle.js";
+import style from "../../GeneralStyle.js";
 import BugItem from "../Items/BugItem.jsx";
 
 
@@ -12,7 +12,7 @@ for (let i = 0; i < 11; i++)
 function BugsList() {
 
     return (
-        <Col span={24} style={list}>
+        <Col span={24} style={style.list}>
             <List itemLayout="horizontal"
                   dataSource={data}
                   renderItem={(item) => (<BugItem item={item}/>)}/>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col, List} from "antd";
-import {list} from "../../GeneralStyle.js";
+import style from "../../GeneralStyle.js";
 import FeatureItem from "../Items/FeatureItem.jsx";
 
 
@@ -12,7 +12,7 @@ for (let i = 0; i < 13; i++)
 function FeaturesList() {
 
     return (
-        <Col span={24} style={list}>
+        <Col span={24} style={style.list}>
             <List itemLayout="horizontal"
                   dataSource={data}
                   renderItem={(item) => (<FeatureItem item={item}/>)}/>

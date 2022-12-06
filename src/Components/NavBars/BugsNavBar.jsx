@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {Affix, Button, Col, Form, Input, Modal, Row, Typography} from "antd";
-import {homeButton, homeIcon, nav, title} from '../../GeneralStyle.js'
+import style from '../../GeneralStyle.js'
 import {ArrowLeftOutlined, PlusOutlined} from "@ant-design/icons";
 import Search from "antd/es/input/Search.js";
 import TextArea from "antd/es/input/TextArea.js";
 import {useNavigate} from "react-router-dom";
 
+const {homeButton, homeIcon, nav, title}=style
 const {Title} = Typography;
 
 function BugsNavBar() {

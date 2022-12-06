@@ -1,11 +1,12 @@
 import React from 'react';
 import {Button, Card, Col, Divider, List, Progress, Row, Typography} from "antd";
-import {bigcard, list, paragraph, mainColor, row} from "../GeneralStyle.js";
+import style from "../GeneralStyle.js";
 import {CheckOutlined, CloseOutlined, EditOutlined} from "@ant-design/icons";
 import {useNavigate} from "react-router-dom";
 
 const {Paragraph, Title, Text} = Typography;
 
+const {bigcard, list, paragraph, mainColor, row} = style
 
 function ProjectDetail() {
     const navigate = useNavigate();

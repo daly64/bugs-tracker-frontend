@@ -1,9 +1,10 @@
 import React from 'react';
 import {Affix, Button, Col, Row, Typography} from "antd";
-import {homeButton, homeIcon, nav, status, title} from '../../GeneralStyle.js'
+import style from '../../GeneralStyle.js'
 import {ArrowLeftOutlined, EditOutlined} from "@ant-design/icons";
 import {useNavigate} from "react-router-dom";
 
+const {homeButton, homeIcon, nav, status, title}=style
 const {Title} = Typography;
 
 function ProjectNavBar() {
