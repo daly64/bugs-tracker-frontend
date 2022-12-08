@@ -18,7 +18,7 @@ const style = {
         border: '.5px solid '+colors.main,
         textAlign: 'center',
     },
-    bigcard: {
+    detail: {
         border: 'none',
         textAlign: 'center',
     },

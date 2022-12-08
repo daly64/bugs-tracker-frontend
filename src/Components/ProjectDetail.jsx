@@ -6,13 +6,13 @@ import {useNavigate} from "react-router-dom";
 
 const {Paragraph, Title, Text} = Typography;
 
-const {bigcard, list, paragraph, mainColor, row} = style
+const {detail, list, paragraph, mainColor, row} = style
 
 function ProjectDetail() {
     const navigate = useNavigate();
     return (
         <Col span={24} style={list}>
-            <Card style={bigcard}>
+            <Card style={detail}>
                 <Row gutter={10} style={row}>
                     <Col span={12}>
                         <Divider orientation="left">Description</Divider>
