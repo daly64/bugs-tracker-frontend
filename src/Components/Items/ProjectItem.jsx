@@ -7,11 +7,11 @@ import {useNavigate} from "react-router-dom";
 const {Paragraph, Text} = Typography;
 const {card, paragraph, mainColor, row, status}=style
 
-function ProjectItem() {
+function ProjectItem({project}) {
     const navigate = useNavigate();
     return (
         <Col span={8} onClick={() => navigate("product/1")}>
-            <Card hoverable title="Project Name" bordered style={card}>
+            <Card hoverable title={project.name} bordered style={card}>
 
                 <Paragraph ellipsis={paragraph}>
                     project description, Duis dolor urna, aliquam ut laoreet sit amet, viverra quis urna.
