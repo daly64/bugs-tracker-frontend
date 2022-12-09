@@ -24,6 +24,12 @@ const getProjects = createAsyncThunk(
         let config = {baseURL, method: 'GET', data: {}}
         return await requestProjects(config, {rejectWithValue})
     })
+const findProjects = createAsyncThunk(
+    'projects/get',
+    async (arg, {rejectWithValue}) => {
+        let config = {baseURL, method: 'GET', data: {}}
+        return await requestProjects(config, {rejectWithValue})
+    })
 const addProject = createAsyncThunk(
     'projects/add',
     async (name, {rejectWithValue}) => {
@@ -82,6 +88,6 @@ const remove = (deleteId, state) => ({...state, data: state.data.filter(project 
 
 
 // export const {} = projectsSlice.actions
-export {getProjects, addProject, removeProject, updateProject}
+export {findProjects,getProjects, addProject, removeProject, updateProject}
 
 export default projectsSlice.reducer
