@@ -16,7 +16,8 @@ function HomeNavBar() {
             <Affix offsetTop='0'>
                 <Row style={nav}>
                     <Col span={8}><Row> <BugOutlined style={icon}/> <h3>Bug Tracker</h3></Row></Col>
-                    <Col span={12}><Search size="large" placeholder="search project" onSearch={(value)=>useProjectsSearch(value)}/></Col>
+                    <Col span={12}><Search size="large" placeholder="search project"
+                                           onSearch={(value) => useProjectsSearch(value)}/></Col>
                     <Col span={4}><Button type='default' style={{marginLeft: '1rem'}}
                                           onClick={showModal}
                                           icon={<PlusOutlined/>}>

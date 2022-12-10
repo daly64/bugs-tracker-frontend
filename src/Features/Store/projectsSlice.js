@@ -24,12 +24,7 @@ const getProjects = createAsyncThunk(
         let config = {baseURL, method: 'GET', data: {}}
         return await requestProjects(config, {rejectWithValue})
     })
-const findProjects = createAsyncThunk(
-    'projects/get',
-    async (arg, {rejectWithValue}) => {
-        let config = {baseURL, method: 'GET', data: {}}
-        return await requestProjects(config, {rejectWithValue})
-    })
+
 const addProject = createAsyncThunk(
     'projects/add',
     async (name, {rejectWithValue}) => {
@@ -56,7 +51,11 @@ const updateProject = createAsyncThunk(
 const projectsSlice = createSlice({
     name,
     initialState,
-    reducers: {},
+    reducers: {
+        findProject: (state = state, {payload}) =>
+            ({...state, data: state.data.filter(project => project.name.includes(payload))}),
+
+    },
     extraReducers: builder => {
         builder
             .addCase(PENDING, (state) => pending(state))
@@ -79,7 +78,7 @@ let UPDATE_FULFILLED = updateProject.fulfilled
 
 const pending = (state) => ({...state, isLoading: true})
 const rejected = (error, state) => ({...state, isLoading: false, error})
-const get = (bugs, state) => ({...state, isLoading: false, data: bugs})
+const get = (projects, state) => ({...state, isLoading: false, data: projects})
 
 const add = (toAddProject, state) => ({...state, data: [...state.data, toAddProject]})
 const updateData = (updatedProject, state) => state.data.map(oldProject => oldProject.id === updatedProject.id ? updatedProject : oldProject)
@@ -87,7 +86,7 @@ const update = (updatedProject, state) => ({...state, data: updateData(updatedPr
 const remove = (deleteId, state) => ({...state, data: state.data.filter(project => project.id !== deleteId)})
 
 
-// export const {} = projectsSlice.actions
-export {findProjects,getProjects, addProject, removeProject, updateProject}
+export const {findProject} = projectsSlice.actions
+export {getProjects, addProject, removeProject, updateProject}
 
 export default projectsSlice.reducer

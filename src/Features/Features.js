@@ -1,30 +1,19 @@
 import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getProjects} from "./Store/projectsSlice.js";
-
-let initialProjects
-let projects
+import {useSelector} from "react-redux";
+import {findProject, getProjects} from "./Store/projectsSlice.js";
+import store from "./Store/configureStore.js";
 
 export function useProjects() {
-    initialProjects = useSelector(state => state.projects.data)
-    const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(getProjects())
-
-    }, [dispatch])
-    projects = initialProjects
-
-
-    return projects
+        store.dispatch(getProjects())
+    }, [])
+    return useSelector(state => state.projects.data)
 }
 
 export function useProjectsSearch(value) {
     console.log('Search', value)
-/*    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(findProjects())
-
-    }, [dispatch])*/
+    if (value !== '') store.dispatch(findProject(value))
+    else store.dispatch(getProjects())
 }
 
 
