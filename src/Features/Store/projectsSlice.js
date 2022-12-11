@@ -1,8 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
-//project object
-let project = (name, bugs = [], progress = 0) => ({id: Date.now(), name, bugs, progress})
 
 // base url
 // let baseURL = 'http://localhost:5500/projects'
@@ -27,8 +25,18 @@ const getProjects = createAsyncThunk(
 
 const addProject = createAsyncThunk(
     'projects/add',
-    async (name, {rejectWithValue}) => {
-        let config = {baseURL, method: 'POST', data: project(name)}
+    async (project, {rejectWithValue}) => {
+        let config = {
+            baseURL, method: 'POST', data:
+                {
+                    name: project.name,
+                    description: project.description,
+                    bugs: [],
+                    features: [],
+                    status: "In progress",
+                    progress: 0
+                }
+        }
         return await requestProjects(config, {rejectWithValue})
     })
 const removeProject = createAsyncThunk(

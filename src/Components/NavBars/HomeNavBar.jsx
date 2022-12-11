@@ -4,7 +4,7 @@ import style from '../../GeneralStyle.js'
 import {BugOutlined, PlusOutlined} from "@ant-design/icons";
 import Search from "antd/es/input/Search.js";
 import ProjectsModal from "../Modals/ProjectsModal.jsx";
-import {useProjectsSearch} from '../../Features/Features.js'
+import {projectsSearch} from '../../Features/projectsFeatures.js'
 
 const {icon, nav} = style
 
@@ -17,7 +17,7 @@ function HomeNavBar() {
                 <Row style={nav}>
                     <Col span={8}><Row> <BugOutlined style={icon}/> <h3>Bug Tracker</h3></Row></Col>
                     <Col span={12}><Search size="large" placeholder="search project"
-                                           onSearch={(value) => useProjectsSearch(value)}/></Col>
+                                           onSearch={(value) => projectsSearch(value)}/></Col>
                     <Col span={4}><Button type='default' style={{marginLeft: '1rem'}}
                                           onClick={showModal}
                                           icon={<PlusOutlined/>}>
