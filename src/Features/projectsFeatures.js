@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {addProject, findProject, getProjects} from "./Store/projectsSlice.js";
+import {addProject, findProject, getProjects, removeProject} from "./Store/projectsSlice.js";
 import store from "./Store/configureStore.js";
 
 export function useProjects() {
@@ -26,7 +26,10 @@ export function modalDescriptionInput(project, setProject, event) {
 
 export function modalAddProject(project) {
     store.dispatch(addProject(project))
+}
 
+export function deleteProject(project) {
+    store.dispatch(removeProject(project._id))
 }
 
 

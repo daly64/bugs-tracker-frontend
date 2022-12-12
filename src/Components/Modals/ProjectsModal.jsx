@@ -8,6 +8,7 @@ function ProjectsModal({isModalOpen, setIsModalOpen}) {
     const handleOk = () => {
         modalAddProject(project)
         setIsModalOpen(false)
+        setProject({name: '', description: ''})
     }
     const handleCancel = () => setIsModalOpen(false)
     return (
@@ -18,12 +19,12 @@ function ProjectsModal({isModalOpen, setIsModalOpen}) {
                onCancel={handleCancel}>
             <Form layout={"vertical"}>
                 <Form.Item label={'Project Name :'}>
-                    <Input placeholder="Please input your project Name"
+                    <Input placeholder="Please input your project Name" value={project.name}
                            onChange={(event) => modalNameInput(project, setProject, event)}/>
 
                 </Form.Item>
                 <Form.Item label={'Project Description :'}>
-                    <TextArea rows={4} placeholder="Please input your project Description"
+                    <TextArea rows={4} placeholder="Please input your project Description" value={project.description}
                               onChange={(event) => modalDescriptionInput(project, setProject, event)}/>
                 </Form.Item>
             </Form>

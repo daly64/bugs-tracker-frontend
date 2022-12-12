@@ -1,7 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
-
+//new project object
+let newProject = (name, description) => ({
+    name, description, bugs: [], features: [], status: "In progress", progress: 0
+})
 // base url
 // let baseURL = 'http://localhost:5500/projects'
 let baseURL = 'https://bugs-tracker-backend-api.onrender.com/projects'
@@ -25,18 +28,8 @@ const getProjects = createAsyncThunk(
 
 const addProject = createAsyncThunk(
     'projects/add',
-    async (project, {rejectWithValue}) => {
-        let config = {
-            baseURL, method: 'POST', data:
-                {
-                    name: project.name,
-                    description: project.description,
-                    bugs: [],
-                    features: [],
-                    status: "In progress",
-                    progress: 0
-                }
-        }
+    async ({name, description}, {rejectWithValue}) => {
+        let config = {baseURL, method: 'POST', data: newProject(name, description)}
         return await requestProjects(config, {rejectWithValue})
     })
 const removeProject = createAsyncThunk(
@@ -50,7 +43,7 @@ const removeProject = createAsyncThunk(
 const updateProject = createAsyncThunk(
     'projects/update',
     async (project, {rejectWithValue}) => {
-        let config = {baseURL: `${baseURL}/${project.id}`, method: 'PUT', data: project}
+        let config = {baseURL: `${baseURL}/${project._id}`, method: 'PUT', data: project}
         await requestProjects(config, {rejectWithValue})
         return project
     })
@@ -89,9 +82,9 @@ const rejected = (error, state) => ({...state, isLoading: false, error})
 const get = (projects, state) => ({...state, isLoading: false, data: projects})
 
 const add = (toAddProject, state) => ({...state, data: [...state.data, toAddProject]})
-const updateData = (updatedProject, state) => state.data.map(oldProject => oldProject.id === updatedProject.id ? updatedProject : oldProject)
+const updateData = (updatedProject, state) => state.data.map(oldProject => oldProject._id === updatedProject._id ? updatedProject : oldProject)
 const update = (updatedProject, state) => ({...state, data: updateData(updatedProject, state)})
-const remove = (deleteId, state) => ({...state, data: state.data.filter(project => project.id !== deleteId)})
+const remove = (deleteId, state) => ({...state, data: state.data.filter(project => project._id !== deleteId)})
 
 
 export const {findProject} = projectsSlice.actions
