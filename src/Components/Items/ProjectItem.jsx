@@ -25,7 +25,7 @@ function ProjectItem({project}) {
                     <Tooltip placement="bottom" title='edit' color={mainColor}>
                         <Button type="ghost" icon={<EditOutlined />} onClick={() => navigate(`product/${project._id}`)}/>
                     </Tooltip>
-                    <Tooltip placement="bottom" title='delete' color={mainColor}>
+                                        <Tooltip placement="bottom" title='delete' color={mainColor}>
                         <Button type="ghost" icon={<DeleteOutlined />} onClick={()=>deleteProject(project)}/>
                     </Tooltip>
                 </Row>
