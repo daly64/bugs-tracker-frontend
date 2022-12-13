@@ -32,5 +32,8 @@ export function deleteProject(project) {
     store.dispatch(removeProject(project._id))
 }
 
-
+export function getProject(id) {
+    let data = useSelector(state => state.projects.data)
+    return data.find(project => project._id === id)
+}
 
