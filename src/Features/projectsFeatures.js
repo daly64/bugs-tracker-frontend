@@ -33,7 +33,6 @@ export function deleteProject(project) {
 }
 
 export function getProject(id) {
-    let data = useSelector(state => state.projects.data)
-    return data.find(project => project._id === id)
+    return useProjects().find(project => project._id === id)
 }
 
