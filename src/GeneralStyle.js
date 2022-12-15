@@ -29,6 +29,9 @@ const style = {
     status: {fontWeight: 'bold'},
     homeButton: {alignSelf: 'center', marginTop: '.7rem',},
     homeIcon: {color: colors.main},
+    centerDiv: {display: 'flex', justifyContent: 'center', alignItems: 'center', height: '97vh'},
+    loadingIcon: {fontSize: '5rem', color: colors.main},
+    loadingText: {marginLeft: '-3rem', color: colors.main},
 }
 
 

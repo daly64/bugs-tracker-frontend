@@ -6,7 +6,6 @@ import {useProjects} from "../Features/projectsFeatures.js";
 
 function HomePage() {
     let projects = useProjects()
-
     return (
         <>
             <HomeNavBar/>
