@@ -3,7 +3,8 @@ import axios from "axios";
 
 //new project object
 let newProject = (name, description) => ({
-    name, description, bugs: [], features: [], status: "In progress", progress: 0
+    name, description, bugs: [], features: [], status: "In progress", progress: 0,
+    resolvedBugs: 0, unResolvedBugs: 0, developedFeatures: 0, unDevelopedFeatures: 0,
 })
 // base url
 // let baseURL = 'http://localhost:5500/projects'

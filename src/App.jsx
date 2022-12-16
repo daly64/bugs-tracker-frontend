@@ -7,7 +7,6 @@ import FeaturesPage from "./Pages/FeaturesPage.jsx";
 
 const router = createBrowserRouter([
     {path: "/", element: <HomePage/>},
-    // {path: "/", element: <LoadingPage/>},
     {path: "product/:id", element: <ProjectPage/>},
     {path: "product/:id/bugs", element: <BugsPage/>},
     {path: "product/:id/features", element: <FeaturesPage/>},

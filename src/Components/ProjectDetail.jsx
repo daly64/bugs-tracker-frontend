@@ -38,9 +38,9 @@ function ProjectDetail({project}) {
                                 /> </Title>}
                                   bordered>
                                 <List.Item> <Text>{project.bugs.length} total</Text> </List.Item>
-                                <List.Item><CheckOutlined style={{color: "green"}}/> <Text>3 resolved</Text>
+                                <List.Item><CheckOutlined style={{color: "green"}}/> <Text>{project.resolvedBugs} resolved</Text>
                                 </List.Item>
-                                <List.Item><CloseOutlined style={{color: "red"}}/> <Text>7 unresolved</Text>
+                                <List.Item><CloseOutlined style={{color: "red"}}/> <Text>{project.unResolvedBugs} unresolved</Text>
                                 </List.Item>
                             </List>
                         </Col>
@@ -51,9 +51,9 @@ function ProjectDetail({project}) {
                                 />
                             </Title>} bordered>
                                 <List.Item> <Text>{project.features.length} total</Text> </List.Item>
-                                <List.Item><CheckOutlined style={{color: "green"}}/> <Text>6 developed</Text>
+                                <List.Item><CheckOutlined style={{color: "green"}}/> <Text>{project.developedFeatures} developed</Text>
                                 </List.Item>
-                                <List.Item><CloseOutlined style={{color: "red"}}/> <Text>6 not developed</Text>
+                                <List.Item><CloseOutlined style={{color: "red"}}/> <Text>{project.unDevelopedFeatures} not developed</Text>
                                 </List.Item>
                             </List>
                         </Col>
