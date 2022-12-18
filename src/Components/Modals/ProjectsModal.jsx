@@ -10,7 +10,10 @@ function ProjectsModal({isModalOpen, setIsModalOpen}) {
         setIsModalOpen(false)
         setProject({name: '', description: ''})
     }
-    const handleCancel = () => setIsModalOpen(false)
+    const handleCancel = () => {
+        setIsModalOpen(false)
+        setProject({name: '', description: ''})
+    }
     return (
         <Modal title="New Project"
                open={isModalOpen}

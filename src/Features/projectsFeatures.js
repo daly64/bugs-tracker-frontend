@@ -1,3 +1,5 @@
+// noinspection JSUnresolvedVariable
+
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addProject, findProject, getProjects, removeProject} from "./Store/projectsSlice.js";

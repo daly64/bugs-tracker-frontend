@@ -4,18 +4,18 @@ import style from "../../GeneralStyle.js";
 import BugItem from "../Items/BugItem.jsx";
 
 
-const data = [];
+/*const data = [];
 for (let i = 0; i < 11; i++)
-    data.push({title: `Bug Title ${i}`, description: `Bug Description ${i}`})
+    data.push({title: `Bug Title ${i}`, description: `Bug Description ${i}`})*/
 
 
-function BugsList() {
+function BugsList({bugs}) {
 
     return (
         <Col span={24} style={style.list}>
             <List itemLayout="horizontal"
-                  dataSource={data}
-                  renderItem={(item) => (<BugItem item={item}/>)}/>
+                  dataSource={bugs}
+                  renderItem={(bug) => (<BugItem item={bug}/>)}/>
 
         </Col>
     );

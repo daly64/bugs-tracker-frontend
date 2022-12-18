@@ -7,11 +7,11 @@ import {getProject} from "../Features/projectsFeatures.js";
 
 function ProjectPage() {
 
-    let {id} = useParams();
+    let {id} = useParams()
     let project = getProject(id)
     return (
         <>
-            {project !== undefined ?
+            {project?
                 <>
                     <ProjectNavBar project={project}/>
                     <ProjectDetail project={project}/>

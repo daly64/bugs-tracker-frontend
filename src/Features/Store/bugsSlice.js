@@ -1,12 +1,18 @@
+// noinspection JSUnresolvedVariable
+
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
-//bug object
-let bug = (description, resolved = false) => ({id: Date.now(), description, resolved})
+//new bug object
+let newBug = (title, description, projectId) => (
+    {description: description, resolved: false, title: title, projectId: projectId}
+)
+
 
 // base url
 // let baseURL = 'http://localhost:5500/bugs'
 let baseURL = 'https://bugs-tracker-backend-api.onrender.com/bugs'
+
 
 let name = 'Bugs'
 let initialState = {isLoading: false, data: [], error: ''}
@@ -26,8 +32,8 @@ const getBugs = createAsyncThunk(
     })
 const addBug = createAsyncThunk(
     'bugs/add',
-    async (description, {rejectWithValue}) => {
-        let config = {baseURL, method: 'POST', data: bug(description)}
+    async ({title, description, projectId}, {rejectWithValue}) => {
+        let config = {baseURL, method: 'POST', data: newBug(title, description, projectId)}
         return await requestBugs(config, {rejectWithValue})
     })
 const removeBug = createAsyncThunk(
@@ -41,7 +47,7 @@ const removeBug = createAsyncThunk(
 const updateBug = createAsyncThunk(
     'bugs/update',
     async (bug, {rejectWithValue}) => {
-        let config = {baseURL: `${baseURL}/${bug.id}`, method: 'PUT', data: bug}
+        let config = {baseURL: `${baseURL}/${bug._id}`, method: 'PUT', data: bug}
         await requestBugs(config, {rejectWithValue})
         return bug
     })
@@ -50,7 +56,10 @@ const updateBug = createAsyncThunk(
 const bugsSlice = createSlice({
     name,
     initialState,
-    reducers: {},
+    reducers: {
+        findBug: (state = state, {payload}) =>
+            ({...state, data: state.data.filter(bug => bug.title.includes(payload))}),
+    },
     extraReducers: builder => {
         builder
             .addCase(PENDING, (state) => pending(state))
@@ -76,12 +85,12 @@ const rejected = (error, state) => ({...state, isLoading: false, error})
 const get = (bugs, state) => ({...state, isLoading: false, data: bugs})
 
 const add = (toAddBug, state) => ({...state, data: [...state.data, toAddBug]})
-const updateData = (updatedBug, state) => state.data.map(oldBug => oldBug.id === updatedBug.id ? updatedBug : oldBug)
+const updateData = (updatedBug, state) => state.data.map(oldBug => oldBug._id === updatedBug._id ? updatedBug : oldBug)
 const update = (updatedBug, state) => ({...state, data: updateData(updatedBug, state)})
-const remove = (deleteId, state) => ({...state, data: state.data.filter(bug => bug.id !== deleteId)})
+const remove = (deleteId, state) => ({...state, data: state.data.filter(bug => bug._id !== deleteId)})
 
 
-// export const {} = bugsSlice.actions
+export const {findBug} = bugsSlice.actions
 export {getBugs, addBug, removeBug, updateBug}
 
 export default bugsSlice.reducer
