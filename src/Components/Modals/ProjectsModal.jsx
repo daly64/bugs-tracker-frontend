@@ -4,7 +4,7 @@ import TextArea from "antd/es/input/TextArea.js";
 import {modalAddProject, modalDescriptionInput, modalNameInput} from "../../Features/projectsFeatures.js";
 
 function ProjectsModal({isModalOpen, setIsModalOpen}) {
-    let [project, setProject] = useState({name: '', description: ''})
+    let [project, setProject] = useState({id: Date.now(), name: '', description: ''})
     const handleOk = () => {
         modalAddProject(project)
         setIsModalOpen(false)

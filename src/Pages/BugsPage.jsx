@@ -13,7 +13,7 @@ function BugsPage() {
             {bugs ?
                 <>
                     <BugsNavBar bugs={bugs} id={id}/>
-                    <BugsList bugs={bugs}/>
+                    <BugsList bugs={bugs} projectId={id}/>
                 </> :
                 <LoadingPage/>
             }

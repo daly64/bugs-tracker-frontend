@@ -4,8 +4,8 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
 //new bug object
-let newBug = (title, description, projectId) => (
-    {description: description, resolved: false, title: title, projectId: projectId}
+let newBug = (index, title, description, projectId) => (
+    {index: index, description: description, resolved: false, title: title, projectId: projectId}
 )
 
 
@@ -32,13 +32,14 @@ const getBugs = createAsyncThunk(
     })
 const addBug = createAsyncThunk(
     'bugs/add',
-    async ({title, description, projectId}, {rejectWithValue}) => {
-        let config = {baseURL, method: 'POST', data: newBug(title, description, projectId)}
+    async ({index, title, description, projectId}, {rejectWithValue}) => {
+        let config = {baseURL, method: 'POST', data: newBug(index, title, description, projectId)}
         return await requestBugs(config, {rejectWithValue})
     })
 const removeBug = createAsyncThunk(
     'bugs/remove',
     async (id, {rejectWithValue}) => {
+        console.log(id)
         let config = {baseURL: `${baseURL}/${id}`, method: 'DELETE', data: {}}
         await requestBugs(config, {rejectWithValue})
         return id

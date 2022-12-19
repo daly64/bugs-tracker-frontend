@@ -38,7 +38,7 @@ function BugsNavBar({id, bugs}) {
                     </Col>
                     <Col span={12}><Search size="large" placeholder="search bug"
                                            onSearch={(value) => bugsSearch(value)}/></Col>
-                    <Col span={4}><Button type='default'
+                    <Col span={4}><Button type='default' style={{marginLeft: '1rem'}}
                                           onClick={showModal}
                                           icon={<PlusOutlined/>}>
                         Add New Bug </Button></Col>
