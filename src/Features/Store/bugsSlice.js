@@ -39,7 +39,6 @@ const addBug = createAsyncThunk(
 const removeBug = createAsyncThunk(
     'bugs/remove',
     async (id, {rejectWithValue}) => {
-        console.log(id)
         let config = {baseURL: `${baseURL}/${id}`, method: 'DELETE', data: {}}
         await requestBugs(config, {rejectWithValue})
         return id

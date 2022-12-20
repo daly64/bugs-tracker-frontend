@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getProjects, updateProject} from "./Store/projectsSlice.js";
 import store from "./Store/configureStore.js";
-import {addBug, findBug, getBugs, removeBug} from "./Store/bugsSlice.js";
+import {addBug, findBug, getBugs, removeBug, updateBug} from "./Store/bugsSlice.js";
 
 export function useBugs(id) {
     const dispatch = useDispatch()
@@ -72,24 +72,22 @@ function deleteBugFromProjectBugs(bugIndex, projectId) {
     if (projects) {
         let project = projects.find(project => project._id === projectId)
         if (project) {
-            console.log(project.bugs)
-            // const index = project.bugs.indexOf(bugIndex)
-            // let updatedProjectBugs = project.bugs.filter(bug => bug.index !== bugIndex)
-            console.log(bugIndex)
-            console.log(updatedProjectBugs)
-            // let updatedProject = {...project, bugs: updatedProjectBugs}
-            // store.dispatch(updateProject(updatedProject))
+            let updatedProjectBugs = project.bugs.filter(projectBugIndex => projectBugIndex !== bugIndex)
+            let updatedProject = {...project, bugs: updatedProjectBugs}
+            store.dispatch(updateProject(updatedProject))
         }
     }
 }
 
-/*function deleteBugFromBugs(bug) {
+function deleteBugFromBugs(bug) {
     store.dispatch(removeBug(bug._id))
-}*/
+}
 
 export function deleteBug(bug, projectId) {
-    // deleteBugFromBugs(bug)
+    deleteBugFromBugs(bug)
     deleteBugFromProjectBugs(bug.index, projectId)
 }
 
-
+export function updateBugFromBugs(bug) {
+    store.dispatch(updateBug(bug))
+}
