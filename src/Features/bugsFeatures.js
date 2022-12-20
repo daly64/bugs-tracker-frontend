@@ -49,7 +49,7 @@ function addBugToProjectBugs(newBugIndex, projectId) {
         let project = projects.find(project => project._id === projectId)
         if (project) {
             let updatedProjectBugs = [...project.bugs, newBugIndex]
-            let updatedProject = {...project, bugs: updatedProjectBugs}
+            let updatedProject = {...project, bugs: updatedProjectBugs, unResolvedBugs: project.unResolvedBugs + 1}
             store.dispatch(updateProject(updatedProject))
         }
     }
@@ -65,29 +65,63 @@ export function modalAddBug(bug, projectId) {
     addBugToProjectBugs(newBug.index, projectId)
 }
 
-
-function deleteBugFromProjectBugs(bugIndex, projectId) {
+function getBugProject(bug) {
     store.dispatch(getProjects())
     let projects = store.getState().projects.data
     if (projects) {
-        let project = projects.find(project => project._id === projectId)
+        let project = projects.find(project => project._id === bug.projectId)
         if (project) {
-            let updatedProjectBugs = project.bugs.filter(projectBugIndex => projectBugIndex !== bugIndex)
-            let updatedProject = {...project, bugs: updatedProjectBugs}
-            store.dispatch(updateProject(updatedProject))
+            return project
         }
     }
+}
+
+function deleteBugFromProjectBugs(bug) {
+
+    let project = getBugProject(bug)
+    if (project) {
+        let updatedProjectBugs = project.bugs.filter(projectBugIndex => projectBugIndex !== bug.index)
+        let updatedProject = bug.resolved ?
+            {
+                ...project,
+                bugs: updatedProjectBugs,
+                resolvedBugs: project.resolvedBugs > 0 ? project.resolvedBugs - 1 : 0
+            } :
+            {
+                ...project,
+                bugs: updatedProjectBugs,
+                unResolvedBugs: project.unResolvedBugs > 0 ? project.unResolvedBugs - 1 : 0
+            }
+
+        store.dispatch(updateProject(updatedProject))
+
+    }
+
 }
 
 function deleteBugFromBugs(bug) {
     store.dispatch(removeBug(bug._id))
 }
 
-export function deleteBug(bug, projectId) {
+
+export function deleteBug(bug) {
     deleteBugFromBugs(bug)
-    deleteBugFromProjectBugs(bug.index, projectId)
+    deleteBugFromProjectBugs(bug)
 }
 
 export function updateBugFromBugs(bug) {
     store.dispatch(updateBug(bug))
+    let project = getBugProject(bug)
+    let updatedProject = bug.resolved ?
+        {
+            ...project,
+            resolvedBugs: project.resolvedBugs + 1,
+            unResolvedBugs: project.unResolvedBugs > 0 ? project.unResolvedBugs - 1 : 0
+        } :
+        {
+            ...project,
+            resolvedBugs: project.resolvedBugs > 0 ? project.resolvedBugs - 1 : 0,
+            unResolvedBugs: project.unResolvedBugs + 1
+        }
+    store.dispatch(updateProject(updatedProject))
 }

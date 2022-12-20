@@ -4,11 +4,11 @@ import {DeleteOutlined} from "@ant-design/icons";
 import {deleteBug, updateBugFromBugs} from "../../Features/bugsFeatures.js";
 
 
-function BugItem({bug, projectId}) {
-    const [resolved, setResolved] = useState(bug.resolved);
+function BugItem({bug}) {
+    const [resolved, setResolved] = useState({enable: bug.resolved});
 
     function handleChanged(e) {
-        setResolved(e)
+        setResolved({enable: e})
         let updatedBug = {...bug, resolved: e}
         updateBugFromBugs(updatedBug)
 
@@ -20,9 +20,9 @@ function BugItem({bug, projectId}) {
                 title={<a>{bug.title}</a>}
                 description={bug.description}
             />
-            <Button type="ghost" icon={<DeleteOutlined/>} onClick={() => deleteBug(bug, projectId)}/>
-            <Switch style={{backgroundColor: resolved ? 'green' : 'red'}}
-                    checked={resolved}
+            <Button type="ghost" icon={<DeleteOutlined/>} onClick={() => deleteBug(bug)}/>
+            <Switch style={{backgroundColor: resolved.enable ? 'green' : 'red'}}
+                    checked={resolved.enable}
                     checkedChildren={'RESOLVED'}
                     unCheckedChildren={'UNRESOLVED'}
                     onChange={(e) => handleChanged(e)}/>

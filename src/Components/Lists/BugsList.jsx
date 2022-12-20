@@ -9,13 +9,13 @@ for (let i = 0; i < 11; i++)
     data.push({title: `Bug Title ${i}`, description: `Bug Description ${i}`})*/
 
 
-function BugsList({bugs,projectId}) {
+function BugsList({bugs}) {
 
     return (
         <Col span={24} style={style.list}>
             <List itemLayout="horizontal"
                   dataSource={bugs}
-                  renderItem={(bug) => (<BugItem bug={bug} projectId={projectId}/>)}/>
+                  renderItem={(bug) => (<BugItem bug={bug}/>)}/>
 
         </Col>
     );
