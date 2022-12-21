@@ -13,6 +13,14 @@ export function useProjects() {
     return useSelector(state => state.projects.data)
 }
 
+export function useLoading() {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getProjects())
+    }, [])
+    return useSelector(state => state.projects.isLoading)
+}
+
 export function projectsSearch(value) {
     if (value !== '') store.dispatch(findProject(value))
     else store.dispatch(getProjects())

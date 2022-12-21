@@ -1,25 +1,30 @@
-import React,{useState} from 'react';
-import {List, Switch} from "antd";
+import React, {useState} from 'react';
+import {Button, List, Switch} from "antd";
+import {deleteFeature, updateFeatureFromFeatures} from "../../Features/featuresFeatures.js";
+import {DeleteOutlined} from "@ant-design/icons";
 
 
-function FeatureItem({item}) {
-    const [permission, setPermission] = useState({enabled: false});
+function FeatureItem({feature}) {
+    const [developed, setDeveloped] = useState({enable: feature.developed});
 
-    function onPermissionChanged(e) {
-        setPermission({enabled: e})
+    function handleChanged(e) {
+        setDeveloped({enable: e})
+        let updatedFeature = {...feature, developed: e}
+        updateFeatureFromFeatures(updatedFeature)
     }
+
     return (
         <List.Item>
             <List.Item.Meta
-                title={<a>{item.title}</a>}
-                description={item.description}
+                title={<a>{feature.title}</a>}
+                description={feature.description}
             />
-
-            <Switch style={{backgroundColor: permission.enabled ? 'green' : 'red'}}
-                    checked={permission.enabled}
+            <Button type="ghost" icon={<DeleteOutlined/>} onClick={() => deleteFeature(feature)}/>
+            <Switch style={{backgroundColor: developed.enabled ? 'green' : 'red'}}
+                    checked={developed.enabled}
                     checkedChildren={'DEVELOPED'}
                     unCheckedChildren={'UNDEVELOPED'}
-                    onChange={(e) => onPermissionChanged(e)}/>
+                    onChange={(e) => handleChanged(e)}/>
         </List.Item>
     );
 }

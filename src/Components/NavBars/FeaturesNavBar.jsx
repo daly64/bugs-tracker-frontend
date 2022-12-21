@@ -1,19 +1,20 @@
+// noinspection ES6CheckImport
+
 import React, {useState} from 'react';
-import {Affix, Button, Col, Form, Input, Modal, Row, Typography} from "antd";
+import {Affix, Button, Col, Row, Typography} from "antd";
 import style from '../../GeneralStyle.js'
 import {ArrowLeftOutlined, PlusOutlined} from "@ant-design/icons";
 import Search from "antd/es/input/Search.js";
-import TextArea from "antd/es/input/TextArea.js";
 import {useNavigate} from "react-router-dom";
+import FeaturesModal from "../Modals/FeaturesModal.jsx";
+import {featuresSearch} from "../../Features/featuresFeatures.js";
 
 const {Title} = Typography
-const {homeButton, homeIcon, nav, title}=style
+const {homeButton, homeIcon, nav, title} = style
 
-function FeaturesNavBar() {
+function FeaturesNavBar({id, features}) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => setIsModalOpen(true)
-    const handleOk = () => setIsModalOpen(false)
-    const handleCancel = () => setIsModalOpen(false)
     const navigate = useNavigate();
     return (
         <>
@@ -24,35 +25,23 @@ function FeaturesNavBar() {
                             <Col span={2} style={homeButton}>
                                 <Button type={"link"}
                                         shape="circle"
-                                        onClick={() => navigate("/product/1")}
+                                        onClick={() => navigate(`/product/${id}`)}
                                         icon={<ArrowLeftOutlined style={homeIcon}/>}/> </Col>
                             <Col span={22}>
-                                <Title level={2} style={title}>12 features</Title>
+                                <Title level={2} style={title}>{features.length} features</Title>
                             </Col>
                         </Row>
 
                     </Col>
-                    <Col span={12}><Search size="large" placeholder="search feature"/></Col>
-                    <Col span={4}><Button type='default'
+                    <Col span={12}><Search size="large" placeholder="search feature"
+                                           onSearch={(value) => featuresSearch(value)}/></Col>
+                    <Col span={4}><Button type='default' style={{marginLeft: '1rem'}}
                                           onClick={showModal}
                                           icon={<PlusOutlined/>}>
                         Add New Feature </Button></Col>
                 </Row>
             </Affix>
-            <Modal title="New Feature"
-                   open={isModalOpen}
-                   onOk={handleOk}
-                   okText={'Add'}
-                   onCancel={handleCancel}>
-                <Form layout={"vertical"}>
-                    <Form.Item label={'Feature Name :'}>
-                        <Input placeholder="Please input your feature Name"/>
-                    </Form.Item>
-                    <Form.Item label={'Feature Description :'}>
-                        <TextArea rows={4} placeholder="Please input your feature Description"/>
-                    </Form.Item>
-                </Form>
-            </Modal>
+            <FeaturesModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} id={id}/>
         </>
 
     );

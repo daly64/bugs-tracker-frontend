@@ -4,18 +4,18 @@ import style from "../../GeneralStyle.js";
 import FeatureItem from "../Items/FeatureItem.jsx";
 
 
-const data = [];
+/*const data = [];
 for (let i = 0; i < 13; i++)
-    data.push({title: `Feature Title ${i}`, description: `Feature Description ${i}`})
+    data.push({title: `Feature Title ${i}`, description: `Feature Description ${i}`})*/
 
 
-function FeaturesList() {
+function FeaturesList({features}) {
 
     return (
         <Col span={24} style={style.list}>
             <List itemLayout="horizontal"
-                  dataSource={data}
-                  renderItem={(item) => (<FeatureItem item={item}/>)}/>
+                  dataSource={features}
+                  renderItem={(feature) => (<FeatureItem feature={feature}/>)}/>
 
         </Col>
     );
