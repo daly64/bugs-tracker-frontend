@@ -129,4 +129,4 @@ export function updateFeatureFromFeatures(feature) {
             unDevelopedFeatures: project.unDevelopedFeatures + 1
         }
     store.dispatch(updateProject(updatedProject))
-}
+    }
