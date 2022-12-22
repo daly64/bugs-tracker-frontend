@@ -61,7 +61,6 @@ function addFeatureToProjectFeatures(newFeatureIndex, projectId) {
 }
 
 function addFeatureToFeatures(feature) {
-    console.log(feature)
     store.dispatch(addFeature(feature))
 }
 
@@ -90,12 +89,12 @@ function deleteFeatureFromProjectFeatures(feature) {
         let updatedProject = feature.developed ?
             {
                 ...project,
-                feature: updatedProjectFeatures,
+                features: updatedProjectFeatures,
                 developedFeatures: project.developedFeatures > 0 ? project.developedFeatures - 1 : 0
             } :
             {
                 ...project,
-                feature: updatedProjectFeatures,
+                features: updatedProjectFeatures,
                 unDevelopedFeatures: project.unDevelopedFeatures > 0 ? project.unDevelopedFeatures - 1 : 0
             }
 

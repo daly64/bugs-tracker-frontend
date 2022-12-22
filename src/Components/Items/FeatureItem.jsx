@@ -20,8 +20,8 @@ function FeatureItem({feature}) {
                 description={feature.description}
             />
             <Button type="ghost" icon={<DeleteOutlined/>} onClick={() => deleteFeature(feature)}/>
-            <Switch style={{backgroundColor: developed.enabled ? 'green' : 'red'}}
-                    checked={developed.enabled}
+            <Switch style={{backgroundColor: developed.enable ? 'green' : 'red'}}
+                    checked={developed.enable}
                     checkedChildren={'DEVELOPED'}
                     unCheckedChildren={'UNDEVELOPED'}
                     onChange={(e) => handleChanged(e)}/>
