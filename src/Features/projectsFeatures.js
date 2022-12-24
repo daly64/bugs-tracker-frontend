@@ -4,8 +4,8 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addProject, findProject, getProjects, removeProject, updateProject} from "./Store/projectsSlice.js";
 import store from "./Store/configureStore.js";
-import {useBugs} from "./bugsFeatures.js";
-import {useFeatures} from "./featuresFeatures.js";
+import {getBugs} from "./Store/bugsSlice.js";
+import {getFeatures} from "./Store/featuresSlice.js";
 
 export function useProjects() {
     const dispatch = useDispatch()
@@ -49,21 +49,38 @@ export function getProject(id) {
 }
 
 export function updateProjectData(project) {
+    store.dispatch(getBugs())
+    store.dispatch(getFeatures())
 
-    let bugs = useBugs(project._id)
-    let features = useFeatures(project._id)
-    let resolvedBugs = 0
-    let unResolvedBugs = 0
-    let developedFeatures = 0
-    let unDevelopedFeatures = 0
-    let totalBugs = bugs.length
-    let totalFeatures = features.length
-    bugs.forEach(bug => bug.reserved ? resolvedBugs += 1 : unResolvedBugs += 1)
-    features.forEach(feature => feature.developed ? developedFeatures += 1 : unDevelopedFeatures += 1)
-    let progress = ((resolvedBugs + developedFeatures) / (totalBugs + totalFeatures))
-    console.log('progress =>', progress)
-    let updatedProject = {...project, progress, resolvedBugs, unResolvedBugs, developedFeatures, unDevelopedFeatures}
-    // store.dispatch(updateProject(updatedProject))
+    let bugs = store.getState().bugs.data
+    let features = store.getState().features.data
+
+    let projectBugs = bugs.filter(bug => bug.projectId === project._id)
+    let projectFeatures = features.filter(feature => feature.projectId === project._id)
+
+    let resolvedBugs = projectBugs.filter(bug => bug.resolved).length
+    // let unResolvedBugs = projectBugs.filter(bug => !bug.resolved).length
+    let developedFeatures = projectFeatures.filter(feature => feature.developed).length
+    // let unDevelopedFeatures = projectFeatures.filter(feature => !feature.developed).length
+
+    let totalBugs = projectBugs.length
+    let totalFeatures = projectFeatures.length
+
+    let progress = Number(((resolvedBugs + developedFeatures) / (totalBugs + totalFeatures)) * 100)
+
+    if (!isNaN(progress)) {
+        /*        let updatedProject = {
+                    ...project,
+                    progress,
+                    resolvedBugs,
+                    unResolvedBugs,
+                    developedFeatures,
+                    unDevelopedFeatures
+                }*/
+        let updatedProject = {...project, progress}
+        store.dispatch(updateProject(updatedProject))
+    }
+
 
 }
 

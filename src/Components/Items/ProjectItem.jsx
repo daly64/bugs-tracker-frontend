@@ -6,11 +6,10 @@ import {useNavigate} from "react-router-dom";
 import {deleteProject} from "../../Features/projectsFeatures.js";
 
 const {Paragraph, Text} = Typography;
-const {card, paragraph, mainColor, row, status}=style
+const {card, paragraph, mainColor, row, status} = style
 
 function ProjectItem({project}) {
     const navigate = useNavigate();
-
     return (
         <Col span={8}>
             <Card hoverable title={project.name} bordered style={card}>
@@ -23,10 +22,10 @@ function ProjectItem({project}) {
                     <Progress percent={project.progress} steps={4} strokeColor={mainColor}/>
                     <Text type="success" style={status}>{project.status}</Text>
                     <Tooltip placement="bottom" title='edit' color={mainColor}>
-                        <Button type="ghost" icon={<EditOutlined />} onClick={() => navigate(`product/${project._id}`)}/>
+                        <Button type="ghost" icon={<EditOutlined/>} onClick={() => navigate(`product/${project._id}`)}/>
                     </Tooltip>
-                                        <Tooltip placement="bottom" title='delete' color={mainColor}>
-                        <Button type="ghost" icon={<DeleteOutlined />} onClick={()=>deleteProject(project)}/>
+                    <Tooltip placement="bottom" title='delete' color={mainColor}>
+                        <Button type="ghost" icon={<DeleteOutlined/>} onClick={() => deleteProject(project)}/>
                     </Tooltip>
                 </Row>
             </Card>

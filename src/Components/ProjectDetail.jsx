@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button, Card, Col, Divider, List, Progress, Row, Typography} from "antd";
 import style from "../GeneralStyle.js";
 import {CheckOutlined, CloseOutlined, EditOutlined} from "@ant-design/icons";
@@ -11,7 +11,10 @@ const {detail, list, paragraph, mainColor, row} = style
 
 function ProjectDetail({project}) {
     const navigate = useNavigate()
-    updateProjectData(project)
+
+    useEffect(() => {
+        updateProjectData(project)
+    }, [])
     return (
         <>
 
