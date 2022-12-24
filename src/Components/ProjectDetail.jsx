@@ -12,9 +12,16 @@ const {detail, list, paragraph, mainColor, row} = style
 function ProjectDetail({project}) {
     const navigate = useNavigate()
 
+
     useEffect(() => {
-        updateProjectData(project)
+        // updateProjectData(project)
+
+        setInterval(() => {
+            updateProjectData(project)
+        }, 1000)
     }, [])
+
+
     return (
         <>
 
@@ -30,7 +37,8 @@ function ProjectDetail({project}) {
                         <Col span={4}/>
                         <Col span={8}>
                             <Divider orientation="center">Progress</Divider>
-                            <Progress type="circle" strokeColor={mainColor} percent={project.progress}/>
+                            <Progress type="circle" strokeColor={mainColor} percent={project.progress}
+                                      onClick={() => updateProjectData(project)}/>
                         </Col>
                     </Row>
                     <Row gutter={30} style={{marginTop: '5rem'}}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Affix, Button, Col, Row, Typography} from "antd";
 import style from '../../GeneralStyle.js'
-import {ArrowLeftOutlined, EditOutlined} from "@ant-design/icons";
+import {ArrowLeftOutlined} from "@ant-design/icons";
 import {useNavigate} from "react-router-dom";
 
 const {homeButton, homeIcon, nav, status, title} = style
@@ -29,8 +29,6 @@ function ProjectNavBar({project}) {
                     </Col>
                     <Col span={16} style={{textAlign: 'end', paddingRight: '4rem'}}>
                         <Title level={4} type="success" style={status}>{project.status}
-                            <Button type='text'
-                                    icon={<EditOutlined style={{color: "green"}}/>}/>
                         </Title>
                     </Col>
                 </Row>

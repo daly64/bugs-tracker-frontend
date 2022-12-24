@@ -59,28 +59,29 @@ export function updateProjectData(project) {
     let projectFeatures = features.filter(feature => feature.projectId === project._id)
 
     let resolvedBugs = projectBugs.filter(bug => bug.resolved).length
-    // let unResolvedBugs = projectBugs.filter(bug => !bug.resolved).length
+    let unResolvedBugs = projectBugs.filter(bug => !bug.resolved).length
     let developedFeatures = projectFeatures.filter(feature => feature.developed).length
-    // let unDevelopedFeatures = projectFeatures.filter(feature => !feature.developed).length
+    let unDevelopedFeatures = projectFeatures.filter(feature => !feature.developed).length
 
     let totalBugs = projectBugs.length
     let totalFeatures = projectFeatures.length
 
     let progress = Number(((resolvedBugs + developedFeatures) / (totalBugs + totalFeatures)) * 100)
+    let status= progress===100?'terminated':'in progress'
 
     if (!isNaN(progress)) {
-        /*        let updatedProject = {
-                    ...project,
-                    progress,
-                    resolvedBugs,
-                    unResolvedBugs,
-                    developedFeatures,
-                    unDevelopedFeatures
-                }*/
-        let updatedProject = {...project, progress}
+        let updatedProject = {
+            ...project,
+            progress,
+            resolvedBugs,
+            unResolvedBugs,
+            developedFeatures,
+            unDevelopedFeatures,
+            status
+        }
+        // let updatedProject = {...project, progress
         store.dispatch(updateProject(updatedProject))
+
     }
-
-
 }
 
