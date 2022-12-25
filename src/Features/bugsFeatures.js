@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getProjects, updateProject} from "./Store/projectsSlice.js";
 import store from "./Store/configureStore.js";
 import {addBug, findBug, getBugs, removeBug, updateBug} from "./Store/bugsSlice.js";
+import {updateProjectData} from "./projectsFeatures.js";
 
 export function useBugs(id) {
     const dispatch = useDispatch()
@@ -124,4 +125,5 @@ export function updateBugFromBugs(bug) {
             unResolvedBugs: project.unResolvedBugs + 1
         }
     store.dispatch(updateProject(updatedProject))
+    updateProjectData(project)
 }

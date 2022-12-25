@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Affix, Button, Col, Row, Typography} from "antd";
 import style from '../../GeneralStyle.js'
 import {ArrowLeftOutlined} from "@ant-design/icons";
 import {useNavigate} from "react-router-dom";
+import {updateProjectName} from "../../Features/projectsFeatures.js";
 
 const {homeButton, homeIcon, nav, status, title} = style
 const {Title} = Typography;
 
 function ProjectNavBar({project}) {
+
+    let [projectName, setProjectName] = useState(project.name)
 
     const navigate = useNavigate()
     return (
@@ -22,8 +25,9 @@ function ProjectNavBar({project}) {
                                         shape="circle"
                                         onClick={() => navigate("/")}
                                         icon={<ArrowLeftOutlined style={homeIcon}/>}/> </Col>
-                            <Col span={22}><Title editable level={3}
-                                                  style={title}>{project.name}</Title></Col>
+                            <Col span={22}><Title
+                                editable={{onChange: (value) => updateProjectName(value, project, setProjectName)}}
+                                level={3} style={title}>{projectName}</Title></Col>
 
                         </Row>
                     </Col>

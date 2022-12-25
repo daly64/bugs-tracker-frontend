@@ -67,7 +67,7 @@ export function updateProjectData(project) {
     let totalFeatures = projectFeatures.length
 
     let progress = Number(((resolvedBugs + developedFeatures) / (totalBugs + totalFeatures)) * 100)
-    let status= progress===100?'terminated':'in progress'
+    let status = progress === 100 ? 'terminated' : 'in progress'
 
     if (!isNaN(progress)) {
         let updatedProject = {
@@ -79,9 +79,18 @@ export function updateProjectData(project) {
             unDevelopedFeatures,
             status
         }
-        // let updatedProject = {...project, progress
+        // let updatedProject = {...project, progress,status}
         store.dispatch(updateProject(updatedProject))
 
     }
 }
 
+export function updateProjectName(value, project, setProjectName) {
+    setProjectName(value)
+    store.dispatch(updateProject({...project, name: value}))
+}
+
+export function updateProjectDescription(value, project, setProjectDescription) {
+    setProjectDescription(value)
+    store.dispatch(updateProject({...project, description: value}))
+}

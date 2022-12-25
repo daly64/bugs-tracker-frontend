@@ -1,37 +1,36 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Card, Col, Divider, List, Progress, Row, Typography} from "antd";
 import style from "../GeneralStyle.js";
 import {CheckOutlined, CloseOutlined, EditOutlined} from "@ant-design/icons";
 import {useNavigate} from "react-router-dom";
-import {updateProjectData} from "../Features/projectsFeatures.js";
+import {updateProjectData, updateProjectDescription,} from "../Features/projectsFeatures.js";
 
 const {Paragraph, Title, Text} = Typography;
 
 const {detail, list, paragraph, mainColor, row} = style
 
 function ProjectDetail({project}) {
+    let [description, setProjectDescription] = useState(project.description)
+
     const navigate = useNavigate()
 
-
     useEffect(() => {
-        // updateProjectData(project)
-
-        setInterval(() => {
-            updateProjectData(project)
-        }, 1000)
+        updateProjectData(project)
     }, [])
 
 
-    return (
-        <>
-
+    return (<>
             <Col span={24} style={list}>
                 <Card style={detail}>
                     <Row gutter={10} style={row}>
                         <Col span={12}>
                             <Divider orientation="left">Description</Divider>
-                            <Paragraph style={paragraph} editable>
-                                {project.description}
+                            <Paragraph style={paragraph}
+                                       editable={{
+                                           onChange: (value) =>
+                                               updateProjectDescription(value, project, setProjectDescription)
+                                       }}>
+                                {description}
                             </Paragraph>
                         </Col>
                         <Col span={4}/>

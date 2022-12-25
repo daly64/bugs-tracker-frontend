@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getProjects, updateProject} from "./Store/projectsSlice.js";
 import store from "./Store/configureStore.js";
 import {addFeature, findFeature, getFeatures, removeFeature, updateFeature} from "./Store/featuresSlice.js";
+import {updateProjectData} from "./projectsFeatures.js";
 
 export function useFeatures(id) {
     const dispatch = useDispatch()
@@ -129,4 +130,5 @@ export function updateFeatureFromFeatures(feature) {
             unDevelopedFeatures: project.unDevelopedFeatures + 1
         }
     store.dispatch(updateProject(updatedProject))
+    updateProjectData(project)
     }
